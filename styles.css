@@ -22,6 +22,7 @@ body {
   width: 100vw;
   height: 100vh;
   overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .wrapper {
@@ -108,6 +109,27 @@ p a:hover {
   color: var(--brand-rocket-dark);
 }
 
+.stripes {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1rem;
+  opacity: 0.6;
+
+  background-size: 100% 8px;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.1) 12.5%,
+    transparent 12.5%,
+    transparent 87.5%,
+    rgba(255, 255, 255, 0.1) 87.5%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+}
+
 aside {
   width: 100%;
   height: 100%;
@@ -121,11 +143,30 @@ aside {
   overflow-y: scroll;
 }
 
+@media (max-width: 800px) {
+  :root {
+    font-size: 50.25%;
+  }
+
+  .wrapper {
+    flex-direction: column;
+  }
+
+  aside {
+    position: relative;
+    height: fit-content;
+  }
+
+  .stripes {
+    left: 0.8rem;
+  }
+}
+
 /* scrollbar */
 
 ::-webkit-scrollbar {
-  width: 1.9rem;
-  height: 1.9rem;
+  width: 0.8rem;
+  height: 0.8rem;
 }
 
 ::-webkit-scrollbar-track {
@@ -133,8 +174,7 @@ aside {
 }
 
 ::-webkit-scrollbar-thumb {
-  box-shadow: inset 0 0 1rem 1rem var(--brand-rocket-dark);
-  border: solid 7px transparent;
+  background: #633bbc;
   border-radius: 2rem;
   background-clip: padding-box;
 }
